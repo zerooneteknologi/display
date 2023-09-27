@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Codescandy">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"></script>
@@ -28,8 +31,8 @@
     <link href="../assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="../assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
 
-    {{-- bootstrap-icons --}}
-
+    {{-- bootstrap --}}
+    <link rel="stylesheet" href="public\assets\libs\bootstrap\dist\css\bootstrap.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
         integrity="sha512-oAvZuuYVzkcTc2dH5z1ZJup5OmSQ000qlfRvuoTTiyTBjwX1faoyearj8KdMq0LgsBTHMrRuMek7s+CxF8yE+w=="
@@ -38,5 +41,6 @@
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="../assets/css/theme.min.css">
-    <title>Starter Page | Dash UI - Bootstrap 5 Admin Dashboard Template</title>
+
+    <title> @yield('title', config('app.name', 'Laravel'))</title>
 </head>

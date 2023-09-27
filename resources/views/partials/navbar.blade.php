@@ -37,6 +37,7 @@
                     </div>
                 </form>
             </div>
+
             <!--Navbar nav -->
             <ul class="navbar-nav navbar-right-wrap ms-lg-auto d-flex nav-top-wrap align-items-center ms-4 ms-lg-0">
                 <a href="#" class="form-check form-switch theme-switch btn btn-ghost btn-icon rounded-circle mb-0 ">
@@ -139,7 +140,7 @@
                     <a class="rounded-circle" href="#!" role="button" id="dropdownUser" data-bs-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <div class="avatar avatar-md avatar-indicators avatar-online">
-                            <img alt="avatar" src="../assets/images/avatar/avatar-11.jpg" class="rounded-circle">
+                            <img alt="avatar" src="../assets/images/avatar/avatar.webp" class="rounded-circle">
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
@@ -148,39 +149,20 @@
 
                             <div class="lh-1 ">
                                 <h5 class="mb-1"> John E. Grainger</h5>
-                                <a href="#!" class="text-inherit fs-6">View my profile</a>
                             </div>
                             <div class=" dropdown-divider mt-3 mb-2"></div>
                         </div>
 
                         <ul class="list-unstyled">
-
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="#!">
-                                    <i class="me-2 icon-xxs dropdown-item-icon" data-feather="user"></i>Edit
-                                    Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#!">
-                                    <i class="me-2 icon-xxs dropdown-item-icon" data-feather="activity"></i>Activity Log
-                                </a>
-
-
-                            </li>
-
-
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="#!">
-
-                                    <i class="me-2 icon-xxs dropdown-item-icon" data-feather="settings"></i>Settings
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../index.html">
-                                    <i class="me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>Sign
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class=" me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>Sign
                                     Out
                                 </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </li>
                         </ul>
 
