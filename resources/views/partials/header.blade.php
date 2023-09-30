@@ -22,17 +22,17 @@
 
 
     <!-- Favicon icon-->
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/favicon/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon/favicon.ico">
 
 
     <!-- Libs CSS -->
     {{--
     <link href="../assets/libs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> --}}
-    <link href="../assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
-    <link href="../assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
+    <link href="/assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
 
     {{-- bootstrap --}}
-    <link rel="stylesheet" href="public\assets\libs\bootstrap\dist\css\bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/libs/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
         integrity="sha512-oAvZuuYVzkcTc2dH5z1ZJup5OmSQ000qlfRvuoTTiyTBjwX1faoyearj8KdMq0LgsBTHMrRuMek7s+CxF8yE+w=="
@@ -40,7 +40,7 @@
 
 
     <!-- Theme CSS -->
-    <link rel="stylesheet" href="../assets/css/theme.min.css">
+    <link rel="stylesheet" href="/assets/css/theme.min.css">
 
     <title> @yield('title', config('app.name', 'Laravel'))</title>
 </head>

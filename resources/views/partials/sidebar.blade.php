@@ -11,6 +11,12 @@
 
             <!-- Nav item -->
             <li class="nav-item">
+                <div class="navbar-heading">Menu</div>
+            </li>
+            <!-- Nav item -->
+
+            <!-- Nav item -->
+            <li class="nav-item">
                 <a class="nav-link has-arrow  collapsed " href="{{ route('home')}}" data-bs-toggle="collapse"
                     data-bs-target="#navDashboard" aria-expanded="false" aria-controls="navDashboard">
                     <i data-feather="home" class="nav-icon me-2 icon-xxs"></i>
@@ -23,55 +29,39 @@
                             <a class="nav-link " href="../pages/dashboard-analytics.html">
                                 Analytics </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="../index.html">
-                                Project </a>
-                        </li>
-
-
-                        <li class="nav-item">
-                            <a class="nav-link has-arrow   " href="../pages/dashboard-ecommerce.html">
-                                Ecommerce
-                            </a>
-
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link has-arrow   " href="../pages/dashboard-crm.html">
-                                CRM
-                            </a>
-
-
-
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link has-arrow   " href="../pages/dashboard-finance.html">
-                                Finance
-                            </a>
-
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link has-arrow   " href="../pages/dashboard-blog.html">
-                                Blog
-                            </a>
-
-                        </li>
-
-
-
                     </ul>
                 </div>
 
             </li>
 
-            <!-- Nav item -->
             <li class="nav-item">
-                <div class="navbar-heading">Apps</div>
+                <a class="nav-link has-arrow  collapsed {{ Request::is('organizer*') ? 'active' : '' }}" href="#"
+                    data-bs-toggle="collapse" data-bs-target="#aparatur" aria-expanded="false" aria-controls="aparatur">
+                    <i data-feather="users" class="nav-icon me-2 icon-xxs"></i>
+                    Aparatur
+                </a>
+
+                <div id="aparatur" class="collapse " data-bs-parent="#sideNavbar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('organizer') ? 'active' : '' }}"
+                                href="{{ route('organizer.index')}}">
+                                Daftar Aparatur </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('organizer/create') ? 'active' : '' }}"
+                                href="{{ route('organizer.create') }}">
+                                Tambah Aparatur </a>
+                        </li>
+                    </ul>
+                </div>
+
             </li>
-            <!-- Nav item -->
+
             <li class="nav-item">
                 <a class="nav-link has-arrow " href="../pages/calendar.html">
-                    <i data-feather="calendar" class="nav-icon me-2 icon-xxs">
-                    </i> Calendar
+                    <i data-feather="users" class="nav-icon me-2 icon-xxs">
+                    </i> Aparatur
                 </a>
             </li>
 

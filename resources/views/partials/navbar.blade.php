@@ -2,8 +2,8 @@
     <!-- navbar -->
     <div class="navbar-custom navbar navbar-expand-lg">
         <div class="container-fluid px-0">
-            <a class="navbar-brand d-block d-md-none" href="../index.html">
-                <img src="../assets/images/brand/logo/logo-2.svg" alt="Image">
+            <a class="navbar-brand d-block d-md-none" href="/index.html">
+                <img src="/assets/images/brand/logo/logo-2.svg" alt="Image">
             </a>
 
 
@@ -140,7 +140,7 @@
                     <a class="rounded-circle" href="#!" role="button" id="dropdownUser" data-bs-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <div class="avatar avatar-md avatar-indicators avatar-online">
-                            <img alt="avatar" src="../assets/images/avatar/avatar.webp" class="rounded-circle">
+                            <img alt="avatar" src="/assets/images/avatar/avatar.webp" class="rounded-circle">
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
