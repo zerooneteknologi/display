@@ -16,7 +16,7 @@
                 </svg>
             </a>
 
-            <div class="d-none d-md-none d-lg-block">
+            {{-- <div class="d-none d-md-none d-lg-block">
                 <!-- Form -->
                 <form action="#">
 
@@ -36,7 +36,7 @@
                         </span>
                     </div>
                 </form>
-            </div>
+            </div> --}}
 
             <!--Navbar nav -->
             <ul class="navbar-nav navbar-right-wrap ms-lg-auto d-flex nav-top-wrap align-items-center ms-4 ms-lg-0">

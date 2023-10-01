@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OrganizerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +29,8 @@ Route::get('/home', [
 ])->name('home');
 
 Route::resource('organizer', OrganizerController::class)->except(['show']);
+Route::resource('gallery', GalleryController::class)->except([
+    'edit',
+    'update',
+    'show',
+]);
