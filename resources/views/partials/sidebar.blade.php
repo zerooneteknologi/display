@@ -71,6 +71,30 @@
 
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link has-arrow  collapsed {{ Request::is('news*') ? 'active' : '' }}" href="#"
+                    data-bs-toggle="collapse" data-bs-target="#news" aria-expanded="false" aria-controls="news">
+                    <i data-feather="file-text" class="nav-icon me-2 icon-xxs"></i>
+                    Berita
+                </a>
+
+                <div id="news" class="collapse " data-bs-parent="#sideNavbar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('news') ? 'active' : '' }}"
+                                href="{{ route('news.index')}}">
+                                Daftar Berita </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('news/create') ? 'active' : '' }}"
+                                href="{{ route('news.create') }}">
+                                Tambah Berita </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </li>
+
         </ul>
 
     </div>

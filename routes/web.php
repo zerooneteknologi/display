@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OrganizerController;
+use App\Models\News;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +36,4 @@ Route::resource('gallery', GalleryController::class)->except([
     'update',
     'show',
 ]);
+Route::resource('news', NewsController::class);
