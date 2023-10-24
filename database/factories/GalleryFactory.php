@@ -18,7 +18,7 @@ class GalleryFactory extends Factory
     {
         return [
             'gallery_name' => fake()->userName(),
-            'gallery_path' => fake()->imageUrl(640, 480, 'animals', true),
+            'gallery_path' => 'https://source.unsplash.com/random',
             'gallery_type' => fake()->mimeType(),
         ];
     }

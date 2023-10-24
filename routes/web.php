@@ -4,6 +4,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OrganizerController;
+use App\Http\Controllers\DisplayController;
 use App\Models\News;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+    // return view('display.display');
 });
 
 Auth::routes();
@@ -37,3 +39,4 @@ Route::resource('gallery', GalleryController::class)->except([
     'show',
 ]);
 Route::resource('news', NewsController::class);
+Route::resource('display', DisplayController::class);

@@ -17,6 +17,7 @@ class OrganizerFactory extends Factory
     public function definition(): array
     {
         return [
+            'organizer_img' => 'https://source.unsplash.com/random',
             'organizer_name' => fake()->name(),
             'organizer_position' => fake()->jobTitle(),
         ];
