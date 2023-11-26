@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -39,6 +40,12 @@ class GalleryController extends Controller
             'gallery_type' => $request->file('gallery_path')->getMimeType(),
         ]);
 
+        $request->session()->flash('success', 'Berhasil Menambah Gakeri');
+
+        return response()->json([
+            'message' => 'Berhasil menambahkan galeri!.',
+            'redirect' => route('gallery.index'),
+        ]);
         return redirect()
             ->route('gallery.index')
             ->with('success', 'Berhasil menambahkan galeri!');

@@ -56,6 +56,27 @@
                                     <button class="btn btn-primary" type="submit">Tambah Aparatur</button>
                                 </div>
 
+                                {{-- progress bar --}}
+                                {{-- <div class="col-12 mt-3">
+                                    <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar bg-info">0%</div>
+                                    </div>
+                                </div> --}}
+                                <!-- Modal -->
+                                <div class="modal fade" id="uploadModal" tabindex="-1"
+                                    aria-labelledby="uploadModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                        <div class="modal-content bg-transparent border-0">
+                                            <div class="modal-body">
+                                                <div class="progress" role="progressbar" aria-valuemin="0"
+                                                    aria-valuemax="100">
+                                                    <div class="progress-bar bg-info">0%</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 {{-- preview --}}
                                 <video id="videoPreview" controls class="img-fluid img-thumbnail d-none"></video>
                                 <img id="imagePreview" src="" class="img-fluid img-thumbnail d-none">
@@ -73,6 +94,11 @@
 @endsection
 
 @push('script')
+{{-- jquery form --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"
+    integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous">
+</script>
+
 <script>
     function imgPreview() {
         const file = document.querySelector('#gallery_path').files[0];
@@ -105,5 +131,32 @@
         }
 
     }
+
+    // progressbar
+    var SITEURL = "{{URL('')}}";
+    $(function() {
+        $(document).ready(function() {
+
+            var bar = $('.progress-bar')
+            $('form').ajaxForm({
+                beforeSend: function () {
+                    var percenVal = '0%';
+                    bar.width(percenVal);
+                    bar.html(percenVal);
+                },
+                uploadProgress: function(event, position, total, percenComplite) {
+                    $('#uploadModal').modal('show');
+                    var percenVal = percenComplite + '%';
+                    bar.width(percenVal);
+                    bar.html(percenVal);
+                },
+                success: function (response) {
+                    if (response.redirect) {
+                        window.location.href = response.redirect;
+                    }
+                }
+            });
+        })
+    })
 </script>
 @endpush

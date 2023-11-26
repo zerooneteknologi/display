@@ -32,11 +32,13 @@ Route::get('/home', [
     'index',
 ])->name('home');
 
-Route::resource('organizer', OrganizerController::class)->except(['show']);
-Route::resource('gallery', GalleryController::class)->except([
-    'edit',
-    'update',
-    'show',
-]);
-Route::resource('news', NewsController::class);
+Route::middleware('auth')->group(function () {
+    Route::resource('organizer', OrganizerController::class)->except(['show']);
+    Route::resource('gallery', GalleryController::class)->except([
+        'edit',
+        'update',
+        'show',
+    ]);
+    Route::resource('news', NewsController::class);
+});
 Route::resource('display', DisplayController::class);
