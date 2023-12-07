@@ -38,12 +38,27 @@
                                 </div>
 
                                 <div class="col-md-7">
+                                    <!-- Select Option -->
+                                    <div class="mb-3">
+                                        <label class="form-label" for="gallery_type">Pilih Type</label>
+                                        <select name="gallery_type" id="gallery_type" class="form-select"
+                                            aria-label="Default select example" required>
+                                            <option value="">Pilih tipe galeri</option>
+                                            <option value="image">Gambar</option>
+                                            <option value="video">Video</option>
+                                            <option value="link">Link</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- file -->
+                                <div class="mb-3 gallery_path">
                                     <label for="gallery_path" class="form-label">File</label>
                                     <div class="input-group has-validation">
                                         <input type="file" onchange="imgPreview()"
                                             class="form-control @error('gallery_path') is-invalid @enderror"
                                             id="gallery_path" name="gallery_path" aria-describedby="gallery_path"
-                                            required>
+                                            required disabled>
                                         @error('gallery_path')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -52,16 +67,17 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 mt-3">
+                                <!-- link -->
+                                <div class="mb-3 link ">
+                                    <label class="form-label" for="link">Link</label>
+                                    <input name="link" type="text" id="link" class="form-control"
+                                        placeholder="Input Text" disabled required>
+                                </div>
+
+                                <div class="col-12">
                                     <button class="btn btn-primary" type="submit">Tambah Aparatur</button>
                                 </div>
 
-                                {{-- progress bar --}}
-                                {{-- <div class="col-12 mt-3">
-                                    <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar bg-info">0%</div>
-                                    </div>
-                                </div> --}}
                                 <!-- Modal -->
                                 <div class="modal fade" id="uploadModal" tabindex="-1"
                                     aria-labelledby="uploadModalLabel" aria-hidden="true">
@@ -100,6 +116,7 @@
 </script>
 
 <script>
+    // previe 
     function imgPreview() {
         const file = document.querySelector('#gallery_path').files[0];
         const imgPreview = document.querySelector('#imagePreview');
@@ -157,6 +174,21 @@
                 }
             });
         })
+    })
+
+    // type
+    $('#gallery_type').on('change', function() {
+        var gallery_path =  $('#gallery_path');
+        var link =  $('#link');
+        
+        if ($(this).val() == 'image' || $(this).val() == 'video') {
+            gallery_path.attr('type', 'file').prop('disabled', false);
+            link.attr('type', 'text').prop('disabled', true);
+        } else {
+            gallery_path.attr('type', 'file').prop('disabled', true);
+            link.attr('type', 'text').prop('disabled', false);
+        }
+        
     })
 </script>
 @endpush

@@ -15,9 +15,7 @@ class GalleryController extends Controller
     public function index()
     {
         return view('media.index', [
-            'galleries' => Gallery::latest()
-                ->limit(5)
-                ->get(),
+            'galleries' => Gallery::latest()->get(),
         ]);
     }
 
@@ -34,11 +32,24 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        Gallery::create([
-            'gallery_name' => $request->gallery_name,
-            'gallery_path' => $request->file('gallery_path')->store('gallery'),
-            'gallery_type' => $request->file('gallery_path')->getMimeType(),
-        ]);
+        if (
+            $request->gallery_type == 'image' ||
+            $request->gallery_type == 'video'
+        ) {
+            Gallery::create([
+                'gallery_name' => $request->gallery_name,
+                'gallery_path' => $request
+                    ->file('gallery_path')
+                    ->store('gallery'),
+                'gallery_type' => $request->gallery_type,
+            ]);
+        } else {
+            Gallery::create([
+                'gallery_name' => $request->gallery_name,
+                'gallery_path' => $request->link,
+                'gallery_type' => $request->gallery_type,
+            ]);
+        }
 
         $request->session()->flash('success', 'Berhasil Menambah Gakeri');
 
@@ -46,9 +57,6 @@ class GalleryController extends Controller
             'message' => 'Berhasil menambahkan galeri!.',
             'redirect' => route('gallery.index'),
         ]);
-        return redirect()
-            ->route('gallery.index')
-            ->with('success', 'Berhasil menambahkan galeri!');
     }
 
     /**
