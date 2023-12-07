@@ -15,8 +15,8 @@ class DisplayController extends Controller
     public function index()
     {
         return view('display.display', [
-            'newses' => News::latest()->limit(5)->get(),
-            'galleries' => Gallery::latest()->limit(5)->get(),
+            'newses' => News::latest()->get(),
+            'galleries' => Gallery::get(),
             'organizers' => Organizer::latest()->get(),
         ]);
     }

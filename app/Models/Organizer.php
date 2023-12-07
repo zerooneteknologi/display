@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Organizer extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $guarded = [''];
 }
