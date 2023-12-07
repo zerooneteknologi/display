@@ -40,5 +40,5 @@ Route::middleware('auth')->group(function () {
         'show',
     ]);
     Route::resource('news', NewsController::class);
+    Route::resource('display', DisplayController::class);
 });
-Route::resource('display', DisplayController::class);
