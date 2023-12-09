@@ -1,33 +1,26 @@
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 
 {{-- ambil durasi --}}
-
 <script>
-    // function getDur(params) {
-    //     // Menunggu video selesai dimuat sebelum mengakses durasinya
-    //     const dur = document.getElementById('video' + params)
-    //     const durResult = document.getElementById('dur' + params)
+    $(document).ready(function() {
+        $('#videoCarousel').on('slide.bs.carousel', function(e) {
+            // Pause the current video when sliding to the next item
+            var currentVideo = $(e.relatedTarget).find('video')[0];
+            if (currentVideo) {
+                currentVideo.pause();
+            }
+        });
 
-    //     const hasil = durResult.dataset.bsInterval = dur.duration
-
-    //     // durResult.setAttribute('data-bs-interval', '545')
-    //     console.log(hasil)
-
-    // }
-</script>
-
-{{-- play --}}
-<script>
-    // Function to refresh the page
-    function autoRefresh() {
-        location.reload();
-    }
-
-    // Set a timeout for the auto-refresh (in milliseconds)
-    setTimeout(autoRefresh, 1106000); // Refresh every 5000 milliseconds (5 seconds)
+        $('#videoCarousel').on('slid.bs.carousel', function(e) {
+            // Play the video of the current item when the slide is complete            
+            var currentVideo = $(e.relatedTarget).find('video')[0];
+            if (currentVideo) {
+                currentVideo.play();
+            }
+        });
+    });
 </script>
 
 {{-- clock --}}

@@ -16,35 +16,35 @@
     <section class="mt-3">
         <div class="row mx-auto">
             <div class="col-9" style="height: 800px">
-                <div id="media" class="carousel slide" data-bs-ride="carousel">
+                <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         @foreach ($galleries as $key => $gallery)
                             @if ($gallery->gallery_type == 'video')
-                                <div id="dur{{ $key }}" class="carousel-item {{ $key == 0 ? 'active' : '' }}"
-                                    data-bs-interval="{{ $key == 0 ? '1104000' : '' }}">
-                                    <video id="video{{ $key }}" autoplay class="d-block w-100">
+                                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                    <video class="d-block w-100 rounded" {{ $key == 0 ? 'autoplay' : '' }}>
                                         <source src="{{ asset('storage/' . $gallery->gallery_path) }}" type="video/mp4">
                                     </video>
                                 </div>
                             @elseif($gallery->gallery_type == 'image')
                                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                                     <img src="{{ asset('storage/' . $gallery->gallery_path) }}"
-                                        class="d-block w-100 img-fluid" data-bs-interval="5000">
+                                        class="d-block w-100 rounded img-fluid">
                                 </div>
                             @else
                                 <div
                                     class="carousel-item
                                         {{ $key == 0 ? 'active' : '' }}">
-                                    <iframe src="https://www.youtube.com/embed/{{ $gallery->gallery_path }}"
-                                        width="100%" height="800vh"></iframe>
+                                    <object class="rounded"
+                                        data="https://www.youtube.com/embed/{{ $gallery->gallery_path }}" width="100%"
+                                        height="800vh"></object>
                                 </div>
                             @endif
                         @endforeach
                     </div>
                 </div>
-
-                {{-- aparat --}}
             </div>
+
+            {{-- aparat --}}
             <div class="col-3">
                 <div class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
@@ -57,9 +57,11 @@
                                     <div class="card-body text-capitalize fs-3">
                                         <img src="{{ asset('storage/' . $organizer->organizer_img) }}"
                                             class="d-block w-100 img-fluid">
-                                        <div class="card-title mt-3"><strong>{{ $organizer->organizer_name }}</strong>
+                                        <div class="card-title mt-3">
+                                            <strong>{{ $organizer->organizer_name }}</strong>
                                             |
-                                            {{ $organizer->organizer_position }}</div>
+                                            {{ $organizer->organizer_position }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

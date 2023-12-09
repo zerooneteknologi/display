@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             OrganizerSeeder::class,
-            GallerySeeder::class,
+            // GallerySeeder::class,
             NewsSeeder::class,
         ]);
     }

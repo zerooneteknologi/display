@@ -16,7 +16,7 @@ class DisplayController extends Controller
     {
         return view('display.display', [
             'newses' => News::latest()->get(),
-            'galleries' => Gallery::get(),
+            'galleries' => Gallery::latest()->get(),
             'organizers' => Organizer::latest()->get(),
         ]);
     }
