@@ -3,7 +3,7 @@
 <section>
     {{-- header --}}
     <nav class="navbar mb-4 py-3 bg-dark text-light shadow">
-        <img src="{{ asset('assets/images/pemda-garut.png') }}" class="" width="100px" alt="">
+        <img src="{{ asset('assets/images/pemda-garut.png') }}" width="100px" alt="">
         <div class="container text-center text-uppercase d-block">
             <div class="h4">pemerintahan kabupaten garut</div>
             <div class="h4">kecamatan leles</div>
@@ -15,12 +15,12 @@
     {{-- media & staff --}}
     <section class="mt-3">
         <div class="row mx-auto">
-            <div class="col-9" style="height: 800px">
+            <div class="col-9" style="height: 850vh">
                 <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         @foreach ($galleries as $key => $gallery)
                             @if ($gallery->gallery_type == 'video')
-                                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                <div class="video carousel-item {{ $key == 0 ? 'active' : '' }}">
                                     <video class="d-block w-100 rounded" {{ $key == 0 ? 'autoplay' : '' }}>
                                         <source src="{{ asset('storage/' . $gallery->gallery_path) }}" type="video/mp4">
                                     </video>
@@ -34,9 +34,9 @@
                                 <div
                                     class="carousel-item
                                         {{ $key == 0 ? 'active' : '' }}">
-                                    <object class="rounded"
-                                        data="https://www.youtube.com/embed/{{ $gallery->gallery_path }}" width="100%"
-                                        height="800vh"></object>
+                                    <iframe allow="autoplay; encrypted-media" class="rounded"
+                                        src="https://www.youtube.com/embed/{{ $gallery->gallery_path }}" width="100%"
+                                        height="800vh"></iframe>
                                 </div>
                             @endif
                         @endforeach
@@ -55,12 +55,11 @@
                                         Aparatur Desa
                                     </div>
                                     <div class="card-body text-capitalize fs-3">
-                                        <img src="{{ asset('storage/' . $organizer->organizer_img) }}"
-                                            class="d-block w-100 img-fluid">
-                                        <div class="card-title mt-3">
+                                        <img class="d-block w-100 overflow-hidden"
+                                            src="{{ asset('storage/' . $organizer->organizer_img) }}" height="500vh">
+                                        <div class="card-title mt-2">
                                             <strong>{{ $organizer->organizer_name }}</strong>
-                                            |
-                                            {{ $organizer->organizer_position }}
+                                            <div>{{ $organizer->organizer_position }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -68,9 +67,9 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="jam-digital">
+                <div class="container">
+                    <div class="row">
+                        <div class="col mt-3 jam-digital">
                             <div id="jam"></div>
                         </div>
                     </div>
@@ -99,4 +98,5 @@
     </nav>
 
 </section>
+
 @include('display.end')

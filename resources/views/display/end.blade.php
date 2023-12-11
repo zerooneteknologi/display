@@ -2,8 +2,18 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 
-{{-- ambil durasi --}}
 <script>
+    // perdurasian
+    const videoItems = document.querySelectorAll('.video');
+
+    videoItems.forEach(videoItem => {
+        const videoElement = videoItem.querySelector('video')
+        videoElement.addEventListener('loadedmetadata', function() {
+            videoItem.setAttribute('data-bs-interval', Math.floor(videoElement.duration * 1000));
+        });
+    });
+
+    // slide on/off video
     $(document).ready(function() {
         $('#videoCarousel').on('slide.bs.carousel', function(e) {
             // Pause the current video when sliding to the next item
