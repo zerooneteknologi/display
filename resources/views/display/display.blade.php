@@ -2,7 +2,7 @@
 
 <section>
     {{-- header --}}
-    <nav class="navbar mb-4 py-3 bg-dark text-light shadow">
+    <nav class="navbar mb-3 py-3 bg-dark text-light shadow">
         <img src="{{ asset('assets/images/pemda-garut.png') }}" width="100px" alt="">
         <div class="container text-center text-uppercase d-block">
             <div class="h4">pemerintahan kabupaten garut</div>
@@ -13,11 +13,11 @@
     </nav>
 
     {{-- media & staff --}}
-    <section class="mt-3">
+    <section>
         <div class="row mx-auto">
-            <div class="col-9" style="height: 850vh">
+            <div class="col-9">
                 <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
+                    <div class="carousel-inner" style="max-height:830px;">
                         @foreach ($galleries as $key => $gallery)
                             @if ($gallery->gallery_type == 'video')
                                 <div class="video carousel-item {{ $key == 0 ? 'active' : '' }}">
@@ -28,16 +28,16 @@
                             @elseif($gallery->gallery_type == 'image')
                                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                                     <img src="{{ asset('storage/' . $gallery->gallery_path) }}"
-                                        class="d-block w-100 rounded img-fluid">
+                                        class="d-block rounded w-100">
                                 </div>
-                            @else
+                                {{-- @else
                                 <div
                                     class="carousel-item
                                         {{ $key == 0 ? 'active' : '' }}">
                                     <iframe allow="autoplay; encrypted-media" class="rounded"
                                         src="https://www.youtube.com/embed/{{ $gallery->gallery_path }}" width="100%"
                                         height="800vh"></iframe>
-                                </div>
+                                </div> --}}
                             @endif
                         @endforeach
                     </div>
@@ -56,7 +56,8 @@
                                     </div>
                                     <div class="card-body text-capitalize fs-3">
                                         <img class="d-block w-100 overflow-hidden"
-                                            src="{{ asset('storage/' . $organizer->organizer_img) }}" height="500vh">
+                                            src="{{ asset('storage/' . $organizer->organizer_img) }}"
+                                            style="max-height: 525px">
                                         <div class="card-title mt-2">
                                             <strong>{{ $organizer->organizer_name }}</strong>
                                             <div>{{ $organizer->organizer_position }}</div>
