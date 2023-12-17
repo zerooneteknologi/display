@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class GalleryController extends Controller
 {
@@ -36,11 +38,58 @@ class GalleryController extends Controller
             $request->gallery_type == 'image' ||
             $request->gallery_type == 'video'
         ) {
+            $fileName = Str::slug($request->gallery_name, '_');
+            $extension = $request->file('gallery_path')->extension();
+            $fileContent = $request->file('gallery_path')->get();
+            $chunkSize = 1000000;
+
+            $totalChunks = ceil(strlen($fileContent) / $chunkSize);
+            $destinationFolder = storage_path('app/public/chunk');
+
+            // Memecah file menjadi bagian-bagian
+            for ($i = 0; $i < $totalChunks; $i++) {
+                // Mendapatkan potongan data
+                $chunk = substr($fileContent, $i * $chunkSize, $chunkSize);
+
+                // Menyimpan potongan data ke file tujuan
+                $destinationFile = "{$destinationFolder}/part_{$i}.dat";
+                File::put($destinationFile, $chunk);
+            }
+
+            // Ambil semua file dalam folder sumber
+            $files = File::files($destinationFolder);
+
+            // Urutkan file berdasarkan nama
+            natsort($files);
+
+            // Buka file tujuan untuk ditulis
+            $combinedFile = storage_path(
+                'app/public/chunk/' . $fileName . '.' . $extension
+            );
+            $destinationHandle = fopen($combinedFile, 'wb');
+
+            // Gabungkan file-file menjadi satu file utuh
+            foreach ($files as $file) {
+                // Baca isi file dan tulis ke file tujuan
+                $chunk = File::get($file);
+                fwrite($destinationHandle, $chunk);
+            }
+
+            // Tutup handle file tujuan
+            fclose($destinationHandle);
+
+            // Hapus file-file sumber setelah digabungkan
+            File::delete($files);
+
+            Storage::move(
+                'chunk/' . $fileName . '.' . $extension,
+                'gallery/' . $fileName . '.' . $extension
+            );
+
             Gallery::create([
                 'gallery_name' => $request->gallery_name,
-                'gallery_path' => $request
-                    ->file('gallery_path')
-                    ->store('gallery'),
+                'gallery_path' =>
+                    'app/public/gallery/' . $fileName . '.' . $extension,
                 'gallery_type' => $request->gallery_type,
             ]);
         } else {
