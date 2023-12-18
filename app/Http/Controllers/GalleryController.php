@@ -44,7 +44,7 @@ class GalleryController extends Controller
             $chunkSize = 1000000;
 
             $totalChunks = ceil(strlen($fileContent) / $chunkSize);
-            $destinationFolder = storage_path('app/public/chunk');
+            $destinationFolder = storage_path('app/public/gallery');
 
             // Memecah file menjadi bagian-bagian
             for ($i = 0; $i < $totalChunks; $i++) {
@@ -64,7 +64,7 @@ class GalleryController extends Controller
 
             // Buka file tujuan untuk ditulis
             $combinedFile = storage_path(
-                'app/public/chunk/' . $fileName . '.' . $extension
+                'app/public/gallery/' . $fileName . '.' . $extension
             );
             $destinationHandle = fopen($combinedFile, 'wb');
 
@@ -80,11 +80,6 @@ class GalleryController extends Controller
 
             // Hapus file-file sumber setelah digabungkan
             File::delete($files);
-
-            Storage::move(
-                'chunk/' . $fileName . '.' . $extension,
-                'gallery/' . $fileName . '.' . $extension
-            );
 
             Gallery::create([
                 'gallery_name' => $request->gallery_name,
