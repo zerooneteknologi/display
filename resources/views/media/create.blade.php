@@ -19,10 +19,11 @@
                         <div class="tab-pane tab-example-design fade show active" id="pills-basic-forms-design"
                             role="tabpanel" aria-labelledby="pills-basic-forms-design-tab">
 
-                            <form action="{{ route('gallery.store')}}" method="POST" enctype="multipart/form-data"
-                                class="row">
+                            <form id="upload" action="{{ route('gallery.store')}}" method="POST"
+                                enctype="multipart/form-data" class="row">
                                 @csrf
                                 <div class="col-md-5">
+                                    <input type="hidden" id="fileName" name="file_name">
                                     <label for="gallery_name" class="form-label">Nama</label>
                                     <div class="input-group has-validation">
                                         <input type="text"

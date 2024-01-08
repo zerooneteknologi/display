@@ -42,3 +42,4 @@ Route::middleware('auth')->group(function () {
     Route::resource('news', NewsController::class);
     Route::resource('display', DisplayController::class);
 });
+Route::post('upload', [GalleryController::class, 'upload'])->name('upload');

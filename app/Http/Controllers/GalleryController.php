@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Pion\Laravel\ChunkUpload\Exceptions\UploadMissingFileException;
+use Pion\Laravel\ChunkUpload\Handler\HandlerFactory;
+use Pion\Laravel\ChunkUpload\Receiver\FileReceiver;
 
 class GalleryController extends Controller
 {
@@ -38,54 +42,10 @@ class GalleryController extends Controller
             $request->gallery_type == 'image' ||
             $request->gallery_type == 'video'
         ) {
-            $fileName = Str::slug($request->gallery_name, '_');
-            $extension = $request->file('gallery_path')->extension();
-            $fileContent = $request->file('gallery_path')->get();
-            $chunkSize = 1000000;
-
-            $totalChunks = ceil(strlen($fileContent) / $chunkSize);
-            $destinationFolder = storage_path('app/public/gallery');
-
-            // Memecah file menjadi bagian-bagian
-            for ($i = 0; $i < $totalChunks; $i++) {
-                // Mendapatkan potongan data
-                $chunk = substr($fileContent, $i * $chunkSize, $chunkSize);
-
-                // Menyimpan potongan data ke file tujuan
-                $destinationFile = "{$destinationFolder}/part_{$i}.dat";
-                File::put($destinationFile, $chunk);
-            }
-
-            // Ambil semua file dalam folder sumber
-            $files = File::files($destinationFolder);
-
-            // Urutkan file berdasarkan nama
-            natsort($files);
-
-            // Buka file tujuan untuk ditulis
-            $combinedFile = storage_path(
-                'app/public/gallery/' . $fileName . '.' . $extension
-            );
-            $destinationHandle = fopen($combinedFile, 'wb');
-
-            // Gabungkan file-file menjadi satu file utuh
-            foreach ($files as $file) {
-                // Baca isi file dan tulis ke file tujuan
-                $chunk = File::get($file);
-                fwrite($destinationHandle, $chunk);
-            }
-
-            // Tutup handle file tujuan
-            fclose($destinationHandle);
-
-            // Hapus file-file sumber setelah digabungkan
-            File::delete($files);
-
             Gallery::create([
                 'gallery_name' => $request->gallery_name,
-                'gallery_path' =>
-                    'app/public/gallery/' . $fileName . '.' . $extension,
                 'gallery_type' => $request->gallery_type,
+                'gallery_path' => 'gallery/' . $request->file_name,
             ]);
         } else {
             Gallery::create([
@@ -95,12 +55,9 @@ class GalleryController extends Controller
             ]);
         }
 
-        $request->session()->flash('success', 'Berhasil Menambah Gakeri');
-
-        return response()->json([
-            'message' => 'Berhasil menambahkan galeri!.',
-            'redirect' => route('gallery.index'),
-        ]);
+        return redirect()
+            ->route('gallery.index')
+            ->with('success', 'Berhasil Menambah Gakeri');
     }
 
     /**
@@ -143,5 +100,58 @@ class GalleryController extends Controller
         return redirect()
             ->route('gallery.index')
             ->with('success', 'Barhasil menghapus Galeri!');
+    }
+
+    public function upload(Request $request)
+    {
+        $receiver = new FileReceiver(
+            'file',
+            $request,
+            HandlerFactory::classFromRequest($request)
+        );
+
+        if (!$receiver->isUploaded()) {
+            # code...
+        }
+
+        $fileReceived = $receiver->receive();
+
+        if ($fileReceived->isFinished()) {
+            $file = $fileReceived->getFile();
+            $extension = $file->getClientOriginalExtension();
+            $fileName = $this->createFilename($file);
+
+            $path = Storage::putFileAs('gallery', $file, $fileName);
+
+            // delete chunked
+            unlink($file->getPathname());
+
+            return [
+                'path' => asset('storage/' . $path),
+                'fileName' => $fileName,
+            ];
+        }
+
+        $hendler = $fileReceived->handler();
+
+        return [
+            'done' => $hendler->getPercentageDone(),
+            'status' => true,
+        ];
+    }
+
+    protected function createFilename(UploadedFile $file)
+    {
+        $extension = $file->getClientOriginalExtension();
+        $filename = str_replace(
+            '.' . $extension,
+            '',
+            $file->getClientOriginalName()
+        ); // Filename without extension
+
+        // Add timestamp hash to name of the file
+        $filename = time() . '.' . $extension;
+
+        return $filename;
     }
 }
