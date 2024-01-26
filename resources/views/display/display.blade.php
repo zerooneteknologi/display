@@ -2,8 +2,8 @@
 
 <section>
     {{-- header --}}
-    <nav class="navbar mb-2 py-2 bg-dark text-light shadow">
-        <img src="{{ asset('assets/images/pemda-garut.png') }}" width="80px" alt="">
+    <nav class="navbar mb-2 pt-2 bg-dark text-light shadow">
+        <img src="{{ asset('assets/images/pemda-garut.png') }}" width="70px" alt="">
         <div class="container text-center text-uppercase d-block">
             <div class="h6 lh-sm">pemerintahan kabupaten garut</div>
             <div class="h6 lh-sm">kecamatan leles</div>
