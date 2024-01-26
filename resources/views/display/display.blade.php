@@ -5,9 +5,9 @@
     <nav class="navbar mb-3 py-3 bg-dark text-light shadow">
         <img src="{{ asset('assets/images/pemda-garut.png') }}" width="100px" alt="">
         <div class="container text-center text-uppercase d-block">
-            <div class="h4">pemerintahan kabupaten garut</div>
-            <div class="h4">kecamatan leles</div>
-            <div class="h3">desa salamnunggal</div>
+            <div class="h5">pemerintahan kabupaten garut</div>
+            <div class="h5">kecamatan leles</div>
+            <div class="h4">desa salamnunggal</div>
             <div class="text-capitalize fst-italic">alamat : jalan inpres no. 16 leles garut 44152</div>
         </div>
     </nav>
@@ -17,7 +17,7 @@
         <div class="row mx-auto">
             <div class="col-9">
                 <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner" style="max-height:830px;">
+                    <div class="carousel-inner" style="max-height:500px;">
                         @foreach ($galleries as $key => $gallery)
                         @if ($gallery->gallery_type == 'video')
                         <div class="video carousel-item {{ $key == 0 ? 'active' : '' }}">
@@ -52,10 +52,10 @@
                                 <div class="card-header bg-info text-center fs-3 fw-bold">
                                     Aparatur Desa
                                 </div>
-                                <div class="card-body text-capitalize fs-3">
+                                <div class="card-body text-capitalize fs-6">
                                     <img class="d-block w-100 overflow-hidden"
                                         src="{{ asset('storage/' . $organizer->organizer_img) }}"
-                                        style="max-height: 525px">
+                                        style="max-height: 350px">
                                     <div class="card-title mt-2">
                                         <strong>{{ $organizer->organizer_name }}</strong>
                                         <div>{{ $organizer->organizer_position }}</div>
