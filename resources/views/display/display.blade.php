@@ -57,8 +57,8 @@
                                         src="{{ asset('storage/' . $organizer->organizer_img) }}"
                                         style="max-height: 200px">
                                     <div class="card-title mt-2">
-                                        <strong class="fs-6">{{ $organizer->organizer_name }}</strong>
-                                        <strong class="fs-6">{{ $organizer->organizer_position }}</strong>
+                                        <div class="fs-6 fw-bold">{{ $organizer->organizer_name }}</div>
+                                        <div class="fs-6 fw-bold">{{ $organizer->organizer_position }}</div>
                                     </div>
                                 </div>
                             </div>
