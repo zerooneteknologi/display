@@ -3,7 +3,7 @@
 <section>
     {{-- header --}}
     <nav class="navbar mb-3 py-3 bg-dark text-light shadow">
-        <img src="{{ asset('assets/images/pemda-garut.png') }}" width="50px" alt="">
+        <img src="{{ asset('assets/images/pemda-garut.png') }}" width="80px" alt="">
         <div class="container text-center text-uppercase d-block">
             <div class="h6 lh-1">pemerintahan kabupaten garut</div>
             <div class="h6 lh-1">kecamatan leles</div>
@@ -57,8 +57,8 @@
                                         src="{{ asset('storage/' . $organizer->organizer_img) }}"
                                         style="max-height: 200px">
                                     <div class="card-title mt-2">
-                                        <div>{{ $organizer->organizer_name }}</div>
-                                        <div>{{ $organizer->organizer_position }}</div>
+                                        <div class="fs-5">{{ $organizer->organizer_name }}</div>
+                                        <div class="fs-6">{{ $organizer->organizer_position }}</div>
                                     </div>
                                 </div>
                             </div>
