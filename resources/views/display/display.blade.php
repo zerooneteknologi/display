@@ -53,7 +53,7 @@
                                     Aparatur Desa
                                 </div>
                                 <div class="card-body text-capitalize fs-3">
-                                    <img class="d-block w-80 overflow-hidden"
+                                    <img class="d-block w-80 overflow-hidden mx-auto"
                                         src="{{ asset('storage/' . $organizer->organizer_img) }}"
                                         style="max-height: 200px">
                                     <div class="card-title mt-2">
