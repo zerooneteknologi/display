@@ -5,9 +5,9 @@
     <nav class="navbar mb-3 py-3 bg-dark text-light shadow">
         <img src="{{ asset('assets/images/pemda-garut.png') }}" width="100px" alt="">
         <div class="container text-center text-uppercase d-block">
-            <div class="h5">pemerintahan kabupaten garut</div>
-            <div class="h5">kecamatan leles</div>
-            <div class="h4">desa salamnunggal</div>
+            <div class="h6">pemerintahan kabupaten garut</div>
+            <div class="h6">kecamatan leles</div>
+            <div class="h5">desa salamnunggal</div>
             <div class="text-capitalize fst-italic">alamat : jalan inpres no. 16 leles garut 44152</div>
         </div>
     </nav>
@@ -49,13 +49,13 @@
                         @foreach ($organizers as $key => $organizer)
                         <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                             <div class="card text-center">
-                                <div class="card-header bg-info text-center fs-3 fw-bold">
+                                <div class="card-header bg-info text-center fs-6 fw-bold">
                                     Aparatur Desa
                                 </div>
-                                <div class="card-body text-capitalize fs-6">
+                                <div class="card-body text-capitalize fs-3">
                                     <img class="d-block w-100 overflow-hidden"
                                         src="{{ asset('storage/' . $organizer->organizer_img) }}"
-                                        style="max-height: 350px">
+                                        style="max-height: 300px">
                                     <div class="card-title mt-2">
                                         <strong>{{ $organizer->organizer_name }}</strong>
                                         <div>{{ $organizer->organizer_position }}</div>
