@@ -3,7 +3,7 @@
 <section>
     {{-- header --}}
     <nav class="navbar mb-3 py-3 bg-dark text-light shadow">
-        <img src="{{ asset('assets/images/pemda-garut.png') }}" width="100px" alt="">
+        <img src="{{ asset('assets/images/pemda-garut.png') }}" width="50px" alt="">
         <div class="container text-center text-uppercase d-block">
             <div class="h6">pemerintahan kabupaten garut</div>
             <div class="h6">kecamatan leles</div>
@@ -17,7 +17,7 @@
         <div class="row mx-auto">
             <div class="col-9">
                 <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner" style="max-height:500px;">
+                    <div class="carousel-inner" style="max-height:300px;">
                         @foreach ($galleries as $key => $gallery)
                         @if ($gallery->gallery_type == 'video')
                         <div class="video carousel-item {{ $key == 0 ? 'active' : '' }}">
@@ -55,7 +55,7 @@
                                 <div class="card-body text-capitalize fs-3">
                                     <img class="d-block w-100 overflow-hidden"
                                         src="{{ asset('storage/' . $organizer->organizer_img) }}"
-                                        style="max-height: 300px">
+                                        style="max-height: 200px">
                                     <div class="card-title mt-2">
                                         <strong>{{ $organizer->organizer_name }}</strong>
                                         <div>{{ $organizer->organizer_position }}</div>
