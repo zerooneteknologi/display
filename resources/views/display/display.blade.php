@@ -4,10 +4,10 @@
     {{-- header --}}
     <nav class="navbar mb-2 pt-2 bg-dark text-light shadow">
         <img src="{{ asset('assets/images/pemda-garut.png') }}" width="70px" alt="">
-        <div class="container text-center text-uppercase d-block">
-            <div class="h6 lh-sm">pemerintahan kabupaten garut</div>
-            <div class="h6 lh-sm">kecamatan leles</div>
-            <div class="h5 lh-sm">desa salamnunggal</div>
+        <div class="container text-center text-uppercase d-block" style="line-height: 10pt">
+            <div class="h6">pemerintahan kabupaten garut</div>
+            <div class="h6">kecamatan leles</div>
+            <div class="h5">desa salamnunggal</div>
             <div class="text-capitalize fst-italic">alamat : jalan inpres no. 16 leles garut 44152</div>
         </div>
     </nav>
