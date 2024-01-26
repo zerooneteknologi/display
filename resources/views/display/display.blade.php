@@ -5,9 +5,9 @@
     <nav class="navbar mb-3 py-3 bg-dark text-light shadow">
         <img src="{{ asset('assets/images/pemda-garut.png') }}" width="50px" alt="">
         <div class="container text-center text-uppercase d-block">
-            <div class="h6">pemerintahan kabupaten garut</div>
-            <div class="h6">kecamatan leles</div>
-            <div class="h5">desa salamnunggal</div>
+            <div class="h6 lh-1">pemerintahan kabupaten garut</div>
+            <div class="h6 lh-1">kecamatan leles</div>
+            <div class="h5 lh-1">desa salamnunggal</div>
             <div class="text-capitalize fst-italic">alamat : jalan inpres no. 16 leles garut 44152</div>
         </div>
     </nav>
@@ -17,7 +17,7 @@
         <div class="row mx-auto">
             <div class="col-9">
                 <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner" style="max-height:300px;">
+                    <div class="carousel-inner" style="max-height:330px;">
                         @foreach ($galleries as $key => $gallery)
                         @if ($gallery->gallery_type == 'video')
                         <div class="video carousel-item {{ $key == 0 ? 'active' : '' }}">
@@ -57,7 +57,7 @@
                                         src="{{ asset('storage/' . $organizer->organizer_img) }}"
                                         style="max-height: 200px">
                                     <div class="card-title mt-2">
-                                        <strong>{{ $organizer->organizer_name }}</strong>
+                                        <div>{{ $organizer->organizer_name }}</div>
                                         <div>{{ $organizer->organizer_position }}</div>
                                     </div>
                                 </div>
