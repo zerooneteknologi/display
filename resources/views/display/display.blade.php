@@ -7,7 +7,7 @@
         <div class="container text-center text-uppercase d-block" style="line-height: 10pt">
             <div class="h6">pemerintahan kabupaten garut</div>
             <div class="h6">kecamatan leles</div>
-            <div class="h5">desa salamnunggal</div>
+            <div class="h6">desa salamnunggal</div>
             <div class="text-capitalize fst-italic">alamat : jalan inpres no. 16 leles garut 44152</div>
         </div>
     </nav>
@@ -17,7 +17,7 @@
         <div class="row mx-auto">
             <div class="col-9">
                 <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner" style="max-height:315px;">
+                    <div class="carousel-inner" style="max-height:320px;">
                         @foreach ($galleries as $key => $gallery)
                         @if ($gallery->gallery_type == 'video')
                         <div class="video carousel-item {{ $key == 0 ? 'active' : '' }}">
@@ -57,7 +57,7 @@
                                         src="{{ asset('storage/' . $organizer->organizer_img) }}"
                                         style="max-height: 200px">
                                     <div class="card-title mt-2">
-                                        <div class="fs-6">{{ $organizer->organizer_name }}</div>
+                                        <strong class="fs-6">{{ $organizer->organizer_name }}</strong>
                                         <strong class="fs-6">{{ $organizer->organizer_position }}</strong>
                                     </div>
                                 </div>
