@@ -19,7 +19,7 @@
             font-size: 50px;
             margin: 0 4.1%;
             padding: 0 5%;
-            width: 20%;
+            width: 30%;
             border-radius: 10px;
             box-sizing: border-box;
         }
