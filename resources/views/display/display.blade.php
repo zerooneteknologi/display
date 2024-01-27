@@ -28,7 +28,7 @@
                         @elseif($gallery->gallery_type == 'image')
                         <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                             <img src="{{ asset('storage/' . $gallery->gallery_path) }}"
-                                class="d-block rounded img-fluid mx-auto">
+                                class="d-block rounded img-fluid mx-auto my-auto">
                         </div>
                         {{-- @else
                         <div class="carousel-item
