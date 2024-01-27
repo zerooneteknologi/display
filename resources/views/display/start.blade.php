@@ -22,6 +22,7 @@
             width: 25%;
             border-radius: 10px;
             box-sizing: border-box;
+            color: white;
         }
 
         #jam span:nth-child(1) {
