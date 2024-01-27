@@ -40,6 +40,6 @@ Route::middleware('auth')->group(function () {
         'show',
     ]);
     Route::resource('news', NewsController::class);
-    Route::resource('display', DisplayController::class);
 });
 Route::post('upload', [GalleryController::class, 'upload'])->name('upload');
+Route::resource('display', DisplayController::class)->only('index');

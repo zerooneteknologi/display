@@ -47,7 +47,7 @@
                                             <option value="">Pilih tipe galeri</option>
                                             <option value="image">Gambar</option>
                                             <option value="video">Video</option>
-                                            <option value="link">Link</option>
+                                            {{-- <option value="link">Link</option> --}}
                                         </select>
                                     </div>
                                 </div>
