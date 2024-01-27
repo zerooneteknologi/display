@@ -16,7 +16,7 @@
         #jam span {
             float: left;
             text-align: center;
-            font-size: 25px;
+            font-size: 30px;
             margin: 0 4.1%;
             padding: 0 5%;
             width: 25%;
