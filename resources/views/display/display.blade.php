@@ -17,7 +17,7 @@
         <div class="row mx-auto">
             <div class="col-9">
                 <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner" style="max-height:400px;">
+                    <div class="carousel-inner" style="max-height:390px;">
                         @foreach ($galleries as $key => $gallery)
                         @if ($gallery->gallery_type == 'video')
                         <div class="video carousel-item {{ $key == 0 ? 'active' : '' }}">
@@ -55,7 +55,7 @@
                                 <div class="card-body text-capitalize fs-3">
                                     <img class="d-block w-80 overflow-hidden mx-auto"
                                         src="{{ asset('storage/' . $organizer->organizer_img) }}"
-                                        style="max-height: 200px">
+                                        style="max-height: 195px">
                                     <div class="card-title mt-2">
                                         <div class="fs-6 fw-bold">{{ $organizer->organizer_name }}</div>
                                         <div class="fs-6 fw-bold">{{ $organizer->organizer_position }}</div>

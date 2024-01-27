@@ -16,10 +16,10 @@
         #jam span {
             float: left;
             text-align: center;
-            font-size: 50px;
+            font-size: 25px;
             margin: 0 4.1%;
             padding: 0 5%;
-            width: 30%;
+            width: 25%;
             border-radius: 10px;
             box-sizing: border-box;
         }
