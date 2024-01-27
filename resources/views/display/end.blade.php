@@ -73,6 +73,13 @@
     }
 
     jam();
+
+    // auto reload
+    function autoRefresh() {
+        window.location = window.location.href;
+    }
+    setInterval(autoRefresh(), (3*3600000));
+    // setInterval('autoRefresh()', (6*3600000));
 </script>
 
 </body>
